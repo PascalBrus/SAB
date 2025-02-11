@@ -1,8 +1,10 @@
 #Insertion Sort
-def sort(nums):
-    for i in range(len(nums)):
-        j = i
-        while j > 0 and nums[j - 1] > nums[j]:
-            nums[j], nums[j - 1] = nums[j - 1], nums[j]
-            j -= 1
-    return nums
+def sort(nums, info):
+    def insertionSort(nums, info):
+        for i in range(len(nums)):
+            j = i
+            while j > 0 and nums[j - 1] > nums[j]:
+                nums[j], nums[j - 1] = nums[j - 1], nums[j]
+                j -= 1
+        return nums
+    insertionSort(nums, info)

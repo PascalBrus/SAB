@@ -1,5 +1,6 @@
 #Bubble sort
-def sort(nums):
+def sort(nums, info):
+  def bubbleSort(nums, info):
     swapping = True
     end = len(nums)
     while swapping:
@@ -12,3 +13,5 @@ def sort(nums):
                 swapping = True
         end -= 1
     return nums
+  bubbleSort(nums, info)
+

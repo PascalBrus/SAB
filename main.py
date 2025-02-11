@@ -15,4 +15,3 @@ ranges = {
 benchmark = Benchmark(optionArray, ranges)
 
 print(f"{colors.WARNING}Printed all avialable Steps{colors.ENDC}")
-#print(arr)

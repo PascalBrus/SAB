@@ -20,9 +20,9 @@ class Sorter:
   def _runAlgorithms(self):
       times = []
       for x in range(0,LOOP):
-        myTimestamp = Timestamp()
+        timeStamp = Timestamp()
         sorted = self._fn(self.nums)
-        end = myTimestamp.end()
+        end = timeStamp.end()
         times.append(end)
       self.standartAbweichung(times)
 
