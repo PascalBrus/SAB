@@ -1,10 +1,11 @@
 from classes.misc import Timestamp
-from config import DEVIATION, LOOP, ROUNDING
+from config import OUTLIERS, LOOP, ROUNDING
 
 
 class Metrics:
   def __init__(self, nums):
     self._timeStamp = Timestamp()
+    self.nonNormalizedDuration = 0
     self._normalizedDuration = 0
     self.iteration = 0
     self.recursions = 0
@@ -29,12 +30,13 @@ class Metrics:
   
   @property
   def normalizedDuration(self):
-    self._normalizedDuration = round(sum(self.normalizeTimes())/float(LOOP-(2*DEVIATION)),ROUNDING)
+    self._normalizedDuration = round(sum(self.normalizeTimes())/float(LOOP-(2*OUTLIERS)),ROUNDING)
+    self.nonNormalizedDuration = sum(self.durationArray)/float(LOOP)
     return self._normalizedDuration
 
   def normalizeTimes(self):
      array = self.durationArray.copy()
-     for x in range(0, DEVIATION):
+     for x in range(0, OUTLIERS):
       #print("min: "+ str(array.index(min(self.durationArray))))
       #print("max: "+ str(array.index(max(self.durationArray))))
       #print("Normalized Array BEFORE pop: " + str(array))
@@ -45,10 +47,14 @@ class Metrics:
      return array
   
   def printMetrics(self):
-    return {"normalizedDuration": self._normalizedDuration,
-            "durationArray": self.durationArray,
+    return {"durationArray": self.durationArray,
+            "nonNormalizedDuration": self.nonNormalizedDuration,
             "normalizedDurationArray:": self.normalizedDurationArray,
+            "normalizedDuration": self._normalizedDuration,
             "iterations": self.iteration,
             "recursions": self.recursions,
             "assignments": self.assignments,
-            "elementCount": self.elementCount}
+            "elementCount": self.elementCount,
+            "loopCount": LOOP,
+            "outliers": OUTLIERS
+            }

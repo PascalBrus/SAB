@@ -1,6 +1,6 @@
 from classes.metrics import Metrics
 from classes.randomArray import RandomArray
-from config import DEVIATION, LOOP, ROUNDING
+from config import OUTLIERS, LOOP, ROUNDING
 
 
 class Sorter: 
