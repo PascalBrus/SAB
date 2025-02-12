@@ -8,5 +8,5 @@ def sort(nums, info):
                     smallest_idx = j
             nums[i], nums[smallest_idx] = nums[smallest_idx], nums[i]
         return nums
-    selectionSort(nums, info)
+    return selectionSort(nums, info)
 
