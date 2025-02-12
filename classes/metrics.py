@@ -53,7 +53,7 @@ class Metrics:
      return array
   
   def printMetrics(self):
-    return {"algorithmName": self.algorithmName,
+    return {"algorithmName": self.algorithmName.capitalize(),
             "durationArray": self.durationArray,
             "nonNormalizedDuration": self.nonNormalizedDuration,
             "normalizedDurationArray": self.normalizedDurationArray,
