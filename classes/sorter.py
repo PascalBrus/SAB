@@ -7,12 +7,12 @@ class Sorter:
   #metadata for sorting functions like what to track for them, like recursions for quick sort but doesnt make sense for bubble???
   #sorterFN the Sorter Function
   #ranged Dict with randomArray ranges 
-  def __init__(self, sorterFN, ranges):
+  def __init__(self, sorterFN, ranges, option):
      self._ranges = ranges
      self._randomArray = RandomArray(self._ranges["count"], self._ranges["lowRange"], self._ranges["highRange"])
      self._nums = self._randomArray.array()
      self._fn = sorterFN
-     self.metrics = Metrics(self.nums)
+     self.metrics = Metrics(self.nums, option, self._ranges)
 
 
   @property
@@ -23,6 +23,7 @@ class Sorter:
         self.metrics.startTimer()
         sorted = self._fn(self.nums, self.metrics)
         self.metrics.endTimer()
+      self.metrics.addSortedNums(sorted)
       return sorted, self.metrics.normalizedDuration
 
   def returnBenchmark(self):

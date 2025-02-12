@@ -1,4 +1,5 @@
 import sys
+from classes.formatter import Formatter
 from classes.sorter import Sorter
 
 
@@ -7,23 +8,17 @@ class Benchmark:
     self._recursionDepth = recursionDepth
     self._sorterArray = []
     self._sorterOutput = []
-    self.importedSorter = ""
+    self.importedSorter = None
     sys.setrecursionlimit(self._recursionDepth)
     for option in options:
       self.importedSorter = self.importSorter(option)
-      self._sorterArray.append(Sorter(self.importedSorter.sort, ranges))
+      self._sorterArray.append(Sorter(self.importedSorter.sort, ranges, option))
       #self._sorterArray.append(Sorter(getattr(self.importedSorter, "sort"), ranges))
       
     for sorter in self._sorterArray:
        self._sorterOutput.append(sorter.returnBenchmark())
        self._sorterOutput.append(sorter.metrics.printMetrics())
-    for element in self._sorterOutput:
-       if isinstance(element, dict):
-        for subelement, value in element.items():
-            print(subelement, value)
-    print("\n\n")
-
-
+    self.formatter = Formatter(self._sorterOutput)
 
   @property
   def recursionDepth(self):
@@ -36,7 +31,7 @@ class Benchmark:
 
   def importSorter(self, option):
     moduleName = "functions."+option
-    print(option)
+    #print(option)
     return __import__(moduleName, fromlist=["sort"])
 
 def sortBubble(nums):

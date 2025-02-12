@@ -22,7 +22,7 @@ def sort(nums, info):
             return final
         if len(nums) < 2:
             return nums
-        sorted_left_side = mergeSort(nums[: len(nums) // 2])
-        sorted_right_side = mergeSort(nums[len(nums) // 2 :])
+        sorted_left_side = mergeSort(nums[: len(nums) // 2], info)
+        sorted_right_side = mergeSort(nums[len(nums) // 2 :], info)
         return mergeSortHelp(sorted_left_side, sorted_right_side)
-    mergeSort(nums, info)
+    return mergeSort(nums, info)

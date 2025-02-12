@@ -3,16 +3,20 @@ from config import OUTLIERS, LOOP, ROUNDING
 
 
 class Metrics:
-  def __init__(self, nums):
+  def __init__(self, nums, option, ranges):
     self._timeStamp = Timestamp()
     self.nonNormalizedDuration = 0
     self._normalizedDuration = 0
     self.iteration = 0
     self.recursions = 0
     self.assignments = 0
-    self.elementCount = len(nums)
+    #self.elementCount = len(nums)
     self.durationArray = []
     self.normalizedDurationArray = []
+    self.algorithmName = option
+    self.origionalNums = nums
+    self.sortedNums = []
+    self.ranges = ranges
   
   def tickIteration(self):
     self.iteration += 1
@@ -22,6 +26,8 @@ class Metrics:
     self.assignments += 1
   def startTimer(self):
     self._timeStamp.start()
+  def addSortedNums(self, value):
+    self.sortedNums = value
 
   def endTimer(self):
     end = self._timeStamp.end()
@@ -47,14 +53,19 @@ class Metrics:
      return array
   
   def printMetrics(self):
-    return {"durationArray": self.durationArray,
+    return {"algorithmName": self.algorithmName,
+            "durationArray": self.durationArray,
             "nonNormalizedDuration": self.nonNormalizedDuration,
-            "normalizedDurationArray:": self.normalizedDurationArray,
+            "normalizedDurationArray": self.normalizedDurationArray,
             "normalizedDuration": self._normalizedDuration,
             "iterations": self.iteration,
             "recursions": self.recursions,
             "assignments": self.assignments,
-            "elementCount": self.elementCount,
+            "lowNumsTreshold": self.ranges["lowRange"],
+            "highNumsTreshold": self.ranges["highRange"],
+            "elementCount": self.ranges["count"],
             "loopCount": LOOP,
-            "outliers": OUTLIERS
+            "outliers": OUTLIERS,
+            "origionalNums": self.origionalNums,
+            "sortedNums": self.sortedNums
             }

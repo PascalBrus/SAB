@@ -7,4 +7,4 @@ def sort(nums, info):
                 nums[j], nums[j - 1] = nums[j - 1], nums[j]
                 j -= 1
         return nums
-    insertionSort(nums, info)
+    return insertionSort(nums, info)
