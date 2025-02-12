@@ -1,5 +1,5 @@
+from classes.metrics import Metrics
 from classes.randomArray import RandomArray
-from classes.misc import Timestamp
 from config import DEVIATION, LOOP, ROUNDING
 
 
@@ -12,20 +12,20 @@ class Sorter:
      self._randomArray = RandomArray(self._ranges["count"], self._ranges["lowRange"], self._ranges["highRange"])
      self._nums = self._randomArray.array()
      self._fn = sorterFN
+     self.metrics = Metrics(self.nums)
+
 
   @property
   def nums(self):
     return self._nums.copy()
-
   def _runAlgorithms(self):
       times = []
       for x in range(0,LOOP):
-        timeStamp = Timestamp()
-        sorted = self._fn(self.nums)
-        end = timeStamp.end()
+        self.metrics.startTimer()
+        sorted = self._fn(self.nums, self.metrics)
+        end = self.metrics.endTimer()
         times.append(end)
       self.standartAbweichung(times)
-
       return sorted, round(sum(times)/float(LOOP-2*DEVIATION),ROUNDING)
   
   def standartAbweichung(self, times):

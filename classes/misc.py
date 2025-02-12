@@ -10,6 +10,8 @@ class colors:
 
 class Timestamp:
   def __init__(self):
+    self.start()
+  def start(self):
     self.startTime = time.time()
     self.endTime = 0
   def end(self):
