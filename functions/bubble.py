@@ -16,5 +16,5 @@ def sort(nums, info):
                 swapping = True
         end -= 1
     return nums
-  bubbleSort(nums, info)
+  return bubbleSort(nums, info)
 

@@ -16,7 +16,9 @@ class Benchmark:
       
     for sorter in self._sorterArray:
        self._sorterOutput.append(sorter.returnBenchmark())
+       self._sorterOutput.append(sorter.metrics.printMetrics())
     print(self._sorterOutput)
+    print("\n\n")
 
 
 

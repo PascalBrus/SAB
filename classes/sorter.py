@@ -19,20 +19,11 @@ class Sorter:
   def nums(self):
     return self._nums.copy()
   def _runAlgorithms(self):
-      times = []
       for x in range(0,LOOP):
         self.metrics.startTimer()
         sorted = self._fn(self.nums, self.metrics)
-        end = self.metrics.endTimer()
-        times.append(end)
-      self.standartAbweichung(times)
-      return sorted, round(sum(times)/float(LOOP-2*DEVIATION),ROUNDING)
-  
-  def standartAbweichung(self, times):
-     for x in range(0, DEVIATION):
-      times.pop(times.index(min(times)))
-      times.pop(times.index(max(times)))
-     return times
+        self.metrics.endTimer()
+      return sorted, self.metrics.normalizedDuration
 
   def returnBenchmark(self):
     return self._runAlgorithms()
