@@ -22,7 +22,7 @@ class Metrics:
     self.iteration += 1
   def tickRecursion(self):
     self.recursions += 1
-  def tickAssignments(self):
+  def tickAssignment(self):
     self.assignments += 1
   def startTimer(self):
     self._timeStamp.start()
