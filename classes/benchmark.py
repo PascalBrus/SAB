@@ -5,10 +5,10 @@ from classes.sorter import Sorter
 
 
 class Benchmark:
-  def __init__(self, options, ranges, recursionDepth=1000):
+  def __init__(self, options, ranges, metricsArray=[], recursionDepth=1000):
     self._recursionDepth = recursionDepth
     self._sorterArray = []
-    self._sorterOutput = []
+    self._sorterOutput = dict()
     self.importedSorter = None
     sys.setrecursionlimit(self._recursionDepth)
     self.numsArray = RandomArray(ranges["count"], ranges["lowRange"], ranges["highRange"]).array()
@@ -18,9 +18,9 @@ class Benchmark:
       #self._sorterArray.append(Sorter(getattr(self.importedSorter, "sort"), ranges))
       
     for sorter in self._sorterArray:
-       self._sorterOutput.append(sorter.returnBenchmark())
+       sorter.returnBenchmark()
        self._sorterOutput.append(sorter.metrics.printMetrics())
-    self.formatter = Formatter(self._sorterOutput)
+    self.formatter = Formatter(self._sorterOutput, metricsArray)
 
   @property
   def recursionDepth(self):
