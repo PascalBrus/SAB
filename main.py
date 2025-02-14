@@ -5,11 +5,11 @@ from classes.misc import colors
 
 ## Literal option muste be File name of sorting Function origin
 ## Sorting function must have 1 and only 1 Entry point named sort()
-optionArray: Literal["bubble","merge","insert", "quick", "selection", "quickIter", "quickIter2"] = ["bubble", "merge"]
+optionArray: Literal["bubble","merge","insert", "quick", "selection", "quickIter", "quickIter2"] = ["bubble"]
 metricsArray: Literal["minimal", "default", "extended", "all"] = "default"
 
 ranges = {
-  "count": 10,
+  "count": 50,
   "lowRange": -50,
   "highRange": 50
 }
