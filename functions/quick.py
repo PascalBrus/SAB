@@ -1,13 +1,18 @@
 #Quick Sort
 def sort(nums, info):
   def quickSort(nums, low, high, info):
+    info.tickRecursions()
     def sortQuickPartition(nums, low, high):
+      info.tickRecursions()
       pivot = nums[high]
       i = low
       for j in range(low, high):
+          info.tickIteration()
           if nums[j] < pivot:
+              info.tickAssignment()
               nums[i], nums[j] = nums[j], nums[i]
               i += 1
+      info.tickAssignment()
       nums[i], nums[high] = nums[high], nums[i]
       return i
     if low < high:

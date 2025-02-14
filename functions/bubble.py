@@ -9,7 +9,7 @@ def sort(nums, info):
         for i in range(1, end):
             info.tickIteration()
             if nums[i - 1] > nums[i]:
-                info.tickAssignments()
+                info.tickAssignment()
                 temp = nums[i - 1]
                 nums[i - 1] = nums[i]
                 nums[i] = temp
@@ -17,4 +17,3 @@ def sort(nums, info):
         end -= 1
     return nums
   return bubbleSort(nums, info)
-

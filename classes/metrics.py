@@ -22,7 +22,7 @@ class Metrics:
     self.iteration += 1
   def tickRecursion(self):
     self.recursions += 1
-  def tickAssignments(self):
+  def tickAssignment(self):
     self.assignments += 1
   def startTimer(self):
     self._timeStamp.start()
@@ -53,7 +53,7 @@ class Metrics:
      return array
   
   def printMetrics(self):
-    return {"algorithmName": self.algorithmName,
+    return {"algorithmName": self.algorithmName.capitalize(),
             "durationArray": self.durationArray,
             "nonNormalizedDuration": self.nonNormalizedDuration,
             "normalizedDurationArray": self.normalizedDurationArray,
@@ -61,8 +61,7 @@ class Metrics:
             "iterations": self.iteration,
             "recursions": self.recursions,
             "assignments": self.assignments,
-            "lowNumsTreshold": self.ranges["lowRange"],
-            "highNumsTreshold": self.ranges["highRange"],
+            "numberRange": f"{self.ranges['lowRange']} : {self.ranges['highRange']}",
             "elementCount": self.ranges["count"],
             "loopCount": LOOP,
             "outliers": OUTLIERS,

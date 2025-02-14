@@ -9,13 +9,17 @@ def sort(nums, info):
 ### CODE AUS INTERNET KOPIERT
     def quickSortIter2(arr, l, h, info):
         def quickSortPation(arr, l, h, info):
+            info.tickRecursions()
             i = ( l - 1 )
             x = arr[h]
             for j in range(l, h):
+                info.tickIteration()
                 if   arr[j] <= x:
                     i = i + 1
+                    info.tickAssignment()
                     arr[i], arr[j] = arr[j], arr[i]
 
+            info.tickAssignment()
             arr[i + 1], arr[h] = arr[h], arr[i + 1]
             return (i + 1)
         size = h - l + 1
@@ -26,6 +30,7 @@ def sort(nums, info):
         top = top + 1
         stack[top] = h
         while top >= 0:
+            info.tickIteration()
             h = stack[top]
             top = top - 1
             l = stack[top]
