@@ -40,9 +40,17 @@ class Formatter:
       metricOptions["elementCount"] = "Sample Size"
       if(self._metricOption == "extended" or self._metricOption == "all"):
         #print("extended")
+        metricOptions.clear()
+        metricOptions["algorithmName"] = "Name"
+        metricOptions["normalizedDuration"] = "Duration"
+        metricOptions["nonNormalizedDuration"] = "NNORMD Duration"
+        metricOptions["iterations"] = "Iterations"
+        metricOptions["recursions"] = "Recursions"
+        metricOptions["assignments"] = "Assignments"
         metricOptions["numberRange"] = "Number Range"
-        metricOptions["origionalNums"] = "UN-Sorted Number"
-        metricOptions["sortedNums"] = "Sorted Number"
+        metricOptions["elementCount"] = "Array-Length"
+        metricOptions["loopCount"] = "Loop Count"
+        metricOptions["outliers"] = "Outliers"
         if(self._metricOption == "all"):
           #print("all")
           metricOptions.clear()
@@ -88,13 +96,14 @@ class Formatter:
           #print("extended")
           table.add_row(sorterOutput[key]["algorithmName"],
                       str(sorterOutput[key]["normalizedDuration"]),
+                      str(sorterOutput[key]["nonNormalizedDuration"]),
                       str(sorterOutput[key]["iterations"]),
                       str(sorterOutput[key]["recursions"]),
                       str(sorterOutput[key]["assignments"]),
-                      str(sorterOutput[key]["elementCount"]),
                       str(sorterOutput[key]["numberRange"]),
-                      str(sorterOutput[key]["origionalNums"]),
-                      str(sorterOutput[key]["sortedNums"]))
+                      str(sorterOutput[key]["elementCount"]),
+                      str(sorterOutput[key]["loopCount"]),
+                      str(sorterOutput[key]["outliers"]))
       if(self._metricOption == "all"):
         #print("all")
         table.add_row(sorterOutput[key]["algorithmName"],
@@ -115,18 +124,18 @@ class Formatter:
     console.print(table)
 
 
-    {"algorithmName": self.algorithmName.capitalize(),
-            "durationArray": self.durationArray,
-            "nonNormalizedDuration": self.nonNormalizedDuration,
-            "normalizedDurationArray": self.normalizedDurationArray,
-            "normalizedDuration": self._normalizedDuration,
-            "iterations": self.iteration,
-            "recursions": self.recursions,
-            "assignments": self.assignments,
-            "numberRange": f"{self.ranges['lowRange']} : {self.ranges['highRange']}",
-            "elementCount": self.ranges["count"],
-            "loopCount": LOOP,
-            "outliers": OUTLIERS,
-            "origionalNums": self.origionalNums,
-            "sortedNums": self.sortedNums
-            }
+    # {"algorithmName": self.algorithmName.capitalize(),
+    #         "durationArray": self.durationArray,
+    #         "nonNormalizedDuration": self.nonNormalizedDuration,
+    #         "normalizedDurationArray": self.normalizedDurationArray,
+    #         "normalizedDuration": self._normalizedDuration,
+    #         "iterations": self.iteration,
+    #         "recursions": self.recursions,
+    #         "assignments": self.assignments,
+    #         "numberRange": f"{self.ranges['lowRange']} : {self.ranges['highRange']}",
+    #         "elementCount": self.ranges["count"],
+    #         "loopCount": LOOP,
+    #         "outliers": OUTLIERS,
+    #         "origionalNums": self.origionalNums,
+    #         "sortedNums": self.sortedNums
+    #         }
