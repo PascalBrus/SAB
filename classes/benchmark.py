@@ -19,7 +19,8 @@ class Benchmark:
       
     for sorter in self._sorterArray:
        sorter.returnBenchmark()
-       self._sorterOutput.append(sorter.metrics.printMetrics())
+       output = sorter.metrics.printMetrics()
+       self._sorterOutput[output["algorithmName"]] = output
     self.formatter = Formatter(self._sorterOutput, metricsArray)
 
   @property

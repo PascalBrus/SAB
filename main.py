@@ -13,10 +13,10 @@ ranges = {
   "lowRange": -50,
   "highRange": 50
 }
-benchmark = Benchmark(optionArray, ranges, "minimal")
-benchmark = Benchmark(optionArray, ranges, "default")
+#benchmark = Benchmark(optionArray, ranges, "minimal")
+#benchmark = Benchmark(optionArray, ranges, "default")
 benchmark = Benchmark(optionArray, ranges, "extended")
-benchmark = Benchmark(optionArray, ranges, "all")
+#benchmark = Benchmark(optionArray, ranges, "all")
 
 
 print(f"{colors.WARNING}Printed all avialable Steps{colors.ENDC}")

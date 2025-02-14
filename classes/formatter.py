@@ -14,7 +14,7 @@ class Formatter:
     #     for subelement, value in element.items():
     #       print(f"{subelement}: {value}")
     # print("\n\n")
-    self.printMetrics(sorterOutput)
+    self.formatMetrics(sorterOutput)
 
   def printState(self):
     #for debugging removed
@@ -26,9 +26,10 @@ class Formatter:
     # print(self.output)
     pass
 
-  def printMetrics(self, sorterOutput):
+  def formatMetrics(self, sorterOutput):
+    os.system('clear')
+    console = Console()
     metricOptions = dict()
-    
     metricOptions["algorithmName"] = "Name"
     metricOptions["normalizedDuration"] = "Sorting Duration"
     if(self._metricOption == "default" or self._metricOption == "extended" or self._metricOption == "all"):
@@ -36,11 +37,10 @@ class Formatter:
       metricOptions["iterations"] = "Iterations"
       metricOptions["recursions"] = "Recursions"
       metricOptions["assignments"] = "Assignments"
+      metricOptions["elementCount"] = "Sample Size"
       if(self._metricOption == "extended" or self._metricOption == "all"):
         #print("extended")
-        metricOptions["elementCount"] = "Array-Length"
-        metricOptions["lowNumsTreshold"] = "lowest Number"
-        metricOptions["highNumsTreshold"] = "highest Number"
+        metricOptions["numberRange"] = "Number Range"
         metricOptions["origionalNums"] = "UN-Sorted Number"
         metricOptions["sortedNums"] = "Sorted Number"
         if(self._metricOption == "all"):
@@ -54,8 +54,7 @@ class Formatter:
           metricOptions["iterations"] = "Iterations"
           metricOptions["recursions"] = "Recursions"
           metricOptions["assignments"] = "Assignments"
-          metricOptions["lowNumsTreshold"] = "lowest Number"
-          metricOptions["highNumsTreshold"] = "highest Number"
+          metricOptions["numberRange"] = "Number Range"
           metricOptions["elementCount"] = "Array-Length"
           metricOptions["loopCount"] = "Loop Count"
           metricOptions["outliers"] = "Outliers"
@@ -64,68 +63,70 @@ class Formatter:
 
     #print(metricOptions.values)
     strValue = ""
-    console = Console()
-
     table = Table(show_header=True, header_style="bold green")
+
+    #adds columns to table
     for metrics in metricOptions.values():
       table.add_column(metrics)
-    #for metricValue in sorterOutput:
-    if(self._metricOption == "minimal"):
-    #print("minimal")
-      table.add_row(sorterOutput["algorithmName"], 
-                    sorterOutput["normalizedDuration"])
-    if(self._metricOption == "default"):
-      #print("default")
-      table.add_row(sorterOutput["algorithmName"],
-                    sorterOutput["normalizedDuration"],
-                    sorterOutput["iterations"],
-                    sorterOutput["recursions"],
-                    sorterOutput["assignments"]
-                    )
-    if(self._metricOption == "extended"):
-        #print("extended")
-        table.add_row(sorterOutput["algorithmName"],
-                    sorterOutput["normalizedDuration"],
-                    sorterOutput["iterations"],
-                    sorterOutput["recursions"],
-                    sorterOutput["assignments"],
-                    sorterOutput["elementCount"],
-                    sorterOutput["lowNumsTreshold"],
-                    sorterOutput["highNumsTreshold"],
-                    sorterOutput["origionalNums"],
-                    sorterOutput["sortedNums"]
 
-                    )
-    if(self._metricOption == "all"):
-      #print("all")
-      table.add_row(sorterOutput["algorithmName"],
-                    sorterOutput["durationArray"],
-                    sorterOutput["nonNormalizedDuration"],
-                    sorterOutput["normalizedDurationArray"],
-                    sorterOutput["normalizedDuration"],
-                    sorterOutput["iterations"],
-                    sorterOutput["recursions"],
-                    sorterOutput["assignments"],
-                    sorterOutput["lowNumsTreshold"],
-                    sorterOutput["highNumsTreshold"],
-                    sorterOutput["elementCount"],
-                    sorterOutput["loopCount"],
-                    sorterOutput["outliers"],
-                    sorterOutput["origionalNums"],
-                    sorterOutput["sortedNums"],
-                    )
-    #print(sorterOutput)
-    # for element in sorterOutput:
-    #    if isinstance(element, dict):
-    #     for subelement, value in element.items():
-    #       if isinstance(value, list):
-    #         for entry in value:
-    #           strValue += ",  " + str(entry)
-    #         table.add_column(subelement, strValue[3:])
-    #         strValue = ""
-    #       else:
-    #         print(value)
-    #         table.add_column(subelement, str(value))
-
-    #print("\n\n")
+    #adds rows to table
+    for key in sorterOutput.keys():
+      print(self._metricOption)
+      if(self._metricOption == "minimal"):
+       #print("minimal")
+       table.add_row(sorterOutput[key]["algorithmName"], 
+                      str(sorterOutput[key]["normalizedDuration"]))
+      if(self._metricOption == "default"):
+        #print("default")
+        table.add_row(sorterOutput[key]["algorithmName"],
+                      str(sorterOutput[key]["normalizedDuration"]),
+                      str(sorterOutput[key]["iterations"]),
+                      str(sorterOutput[key]["recursions"]),
+                      str(sorterOutput[key]["assignments"]),
+                      str(sorterOutput[key]["elementCount"]))
+      if(self._metricOption == "extended"):
+          #print("extended")
+          table.add_row(sorterOutput[key]["algorithmName"],
+                      str(sorterOutput[key]["normalizedDuration"]),
+                      str(sorterOutput[key]["iterations"]),
+                      str(sorterOutput[key]["recursions"]),
+                      str(sorterOutput[key]["assignments"]),
+                      str(sorterOutput[key]["elementCount"]),
+                      str(sorterOutput[key]["numberRange"]),
+                      str(sorterOutput[key]["origionalNums"]),
+                      str(sorterOutput[key]["sortedNums"]))
+      if(self._metricOption == "all"):
+        #print("all")
+        table.add_row(sorterOutput[key]["algorithmName"],
+                      str(sorterOutput[key]["durationArray"]),
+                      str(sorterOutput[key]["nonNormalizedDuration"]),
+                      str(sorterOutput[key]["normalizedDurationArray"]),
+                      str(sorterOutput[key]["normalizedDuration"]),
+                      str(sorterOutput[key]["iterations"]),
+                      str(sorterOutput[key]["recursions"]),
+                      str(sorterOutput[key]["assignments"]),
+                      str(sorterOutput[key]["numberRange"]),
+                      str(sorterOutput[key]["elementCount"]),
+                      str(sorterOutput[key]["loopCount"]),
+                      str(sorterOutput[key]["outliers"]),
+                      str(sorterOutput[key]["origionalNums"]),
+                      str(sorterOutput[key]["sortedNums"]))
+      table.add_row(end_section=True)
     console.print(table)
+
+
+    {"algorithmName": self.algorithmName.capitalize(),
+            "durationArray": self.durationArray,
+            "nonNormalizedDuration": self.nonNormalizedDuration,
+            "normalizedDurationArray": self.normalizedDurationArray,
+            "normalizedDuration": self._normalizedDuration,
+            "iterations": self.iteration,
+            "recursions": self.recursions,
+            "assignments": self.assignments,
+            "numberRange": f"{self.ranges['lowRange']} : {self.ranges['highRange']}",
+            "elementCount": self.ranges["count"],
+            "loopCount": LOOP,
+            "outliers": OUTLIERS,
+            "origionalNums": self.origionalNums,
+            "sortedNums": self.sortedNums
+            }
