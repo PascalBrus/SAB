@@ -55,9 +55,7 @@ class Formatter:
           #print("all")
           metricOptions.clear()
           metricOptions["algorithmName"] = "Name"
-          metricOptions["durationArray"] = "NNORMD Duration-Array"
           metricOptions["nonNormalizedDuration"] = "NNORMD Duration"
-          metricOptions["normalizedDurationArray"] = "Duration-Array"
           metricOptions["normalizedDuration"] = "Duration"
           metricOptions["iterations"] = "Iterations"
           metricOptions["recursions"] = "Recursions"
@@ -66,6 +64,8 @@ class Formatter:
           metricOptions["elementCount"] = "Array-Length"
           metricOptions["loopCount"] = "Loop Count"
           metricOptions["outliers"] = "Outliers"
+          metricOptions["durationArray"] = "NNORMD Duration-Array"
+          metricOptions["normalizedDurationArray"] = "Duration-Array"
           metricOptions["origionalNums"] = "UN-Sorted Number"
           metricOptions["sortedNums"] = "Sorted Number"
 
@@ -107,10 +107,8 @@ class Formatter:
       if(self._metricOption == "all"):
         #print("all")
         table.add_row(sorterOutput[key]["algorithmName"],
-                      str(sorterOutput[key]["durationArray"]),
-                      str(sorterOutput[key]["nonNormalizedDuration"]),
-                      str(sorterOutput[key]["normalizedDurationArray"]),
                       str(sorterOutput[key]["normalizedDuration"]),
+                      str(sorterOutput[key]["nonNormalizedDuration"]),
                       str(sorterOutput[key]["iterations"]),
                       str(sorterOutput[key]["recursions"]),
                       str(sorterOutput[key]["assignments"]),
@@ -118,10 +116,20 @@ class Formatter:
                       str(sorterOutput[key]["elementCount"]),
                       str(sorterOutput[key]["loopCount"]),
                       str(sorterOutput[key]["outliers"]),
-                      str(sorterOutput[key]["origionalNums"]),
-                      str(sorterOutput[key]["sortedNums"]))
+                      str(sorterOutput[key]["outliers"]),
+                      str(sorterOutput[key]["outliers"]),
+                      str(sorterOutput[key]["outliers"]),
+                      str(sorterOutput[key]["outliers"])
+
+                      )
       table.add_row(end_section=True)
     console.print(table)
+
+
+          metricOptions["durationArray"] = "NNORMD Duration-Array"
+          metricOptions["normalizedDurationArray"] = "Duration-Array"
+          metricOptions["origionalNums"] = "UN-Sorted Number"
+          metricOptions["sortedNums"] = "Sorted Number"
 
 
     # {"algorithmName": self.algorithmName.capitalize(),
