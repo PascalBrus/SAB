@@ -37,7 +37,6 @@ ranges = {
 
 rangesValid = validateRanges(args.numberRanges).validate()
 
-
 if args.metricsMode == None:
   print("MetricsMode invalid!")
   print(args.metricsMode)
