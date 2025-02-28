@@ -34,7 +34,6 @@ ranges = {
   "highRange": 50
 }
 
-
 rangesValid = validateRanges(args.numberRanges).validate()
 
 if args.metricsMode == None:
