@@ -30,27 +30,27 @@ class Formatter:
       if(self._metricOption == "minimal"):
        #print("minimal")
        self.table.add_row(sorterOutput[key]["algorithmName"], 
-                      str(sorterOutput[key]["normalizedDuration"]))
+                      str(sorterOutput[key]["normalizedDuration"])+" ms")
       if(self._metricOption == "default"):
         #print("default")
         self.table.add_row(sorterOutput[key]["algorithmName"],
-                      str(sorterOutput[key]["normalizedDuration"]),
+                      str(sorterOutput[key]["normalizedDuration"])+" ms",
                       str(sorterOutput[key]["iterations"]),
                       str(sorterOutput[key]["recursions"]),
                       str(sorterOutput[key]["assignments"]))
       if(self._metricOption == "extended"):
           #print("extended")
           self.table.add_row(sorterOutput[key]["algorithmName"],
-                      str(sorterOutput[key]["normalizedDuration"]),
-                      str(sorterOutput[key]["nonNormalizedDuration"]),
+                      str(sorterOutput[key]["normalizedDuration"])+" ms",
+                      str(sorterOutput[key]["nonNormalizedDuration"])+" ms",
                       str(sorterOutput[key]["iterations"]),
                       str(sorterOutput[key]["recursions"]),
                       str(sorterOutput[key]["assignments"]))
       if(self._metricOption == "alev"):
         #print("alev")
         self.table.add_row(sorterOutput[key]["algorithmName"],
-                      str(sorterOutput[key]["normalizedDuration"]),
-                      str(sorterOutput[key]["nonNormalizedDuration"]),
+                      str(sorterOutput[key]["normalizedDuration"])+" ms",
+                      str(sorterOutput[key]["nonNormalizedDuration"])+" ms",
                       str(sorterOutput[key]["iterations"]),
                       str(sorterOutput[key]["recursions"]),
                       str(sorterOutput[key]["assignments"]),
@@ -59,8 +59,8 @@ class Formatter:
       if(self._metricOption == "all"):
         #print("all")
         self.table.add_row(sorterOutput[key]["algorithmName"],
-                      str(sorterOutput[key]["normalizedDuration"]),
-                      str(sorterOutput[key]["nonNormalizedDuration"]),
+                      str(sorterOutput[key]["normalizedDuration"])+" ms",
+                      str(sorterOutput[key]["nonNormalizedDuration"])+" ms",
                       str(sorterOutput[key]["iterations"]),
                       str(sorterOutput[key]["recursions"]),
                       str(sorterOutput[key]["assignments"]),
@@ -72,7 +72,7 @@ class Formatter:
   def createMetricOptions(self):
     metricOptions = dict()
     metricOptions["algorithmName"] = "Name"
-    metricOptions["normalizedDuration"] = "Sorting Duration"
+    metricOptions["normalizedDuration"] = "Sorting Duration in ms"
     if(self._metricOption == "default" or self._metricOption == "extended" or self._metricOption == "alev" or self._metricOption == "all"):
       #print("default")
       metricOptions["iterations"] = "Iterations"
@@ -82,8 +82,8 @@ class Formatter:
         #print("extended")
         metricOptions.clear()
         metricOptions["algorithmName"] = "Name"
-        metricOptions["normalizedDuration"] = "Duration"
-        metricOptions["nonNormalizedDuration"] = "NNORMD Duration"
+        metricOptions["normalizedDuration"] = "Duration in ms"
+        metricOptions["nonNormalizedDuration"] = "NNORMD Duration in ms"
         metricOptions["iterations"] = "Iterations"
         metricOptions["recursions"] = "Recursions"
         metricOptions["assignments"] = "Assignments"
@@ -91,8 +91,8 @@ class Formatter:
           #print("alev")
           metricOptions.clear()
           metricOptions["algorithmName"] = "Name"
-          metricOptions["nonNormalizedDuration"] = "NNORMD Duration"
-          metricOptions["normalizedDuration"] = "Duration"
+          metricOptions["nonNormalizedDuration"] = "NNORMD Duration in ms"
+          metricOptions["normalizedDuration"] = "Duration in ms"
           metricOptions["iterations"] = "Iterations"
           metricOptions["recursions"] = "Recursions"
           metricOptions["assignments"] = "Assignments"
@@ -102,8 +102,8 @@ class Formatter:
             #print("all")
             metricOptions.clear()
             metricOptions["algorithmName"] = "Name"
-            metricOptions["nonNormalizedDuration"] = "NNORMD Duration"
-            metricOptions["normalizedDuration"] = "Duration"
+            metricOptions["nonNormalizedDuration"] = "NNORMD Duration in ms"
+            metricOptions["normalizedDuration"] = "Duration in ms"
             metricOptions["iterations"] = "Iterations"
             metricOptions["recursions"] = "Recursions"
             metricOptions["assignments"] = "Assignments"
