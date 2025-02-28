@@ -21,7 +21,7 @@ args = parser.parse_args()
 
 ## Literal option muste be File name of sorting Function origin
 ## Sorting function must have 1 and only 1 Entry point named sort()
-optionArray: Literal["bubble","merge","insert", "quick", "selection", "quickIter", "quickIter2"] = ["bubble", "merge"]
+optionArray: Literal["bubble","merge","insert", "quick", "selection", "quickIter", "quickIter2"] = []
 metricsArray: Literal["minimal", "default", "extended", "all"] = "default"
 
 ranges = {
@@ -49,7 +49,8 @@ if args.sortingOptions == None:
 #validateMetricOpt = validateArgs(sortingArray, args.sortingOptions).validate()
 #validateSortingOpt = validateArgs(metricsArray, args.metricsMode).validate()
 
-
+for option in args.sortingOptions:
+  optionArray.append(option)
 
 
 if args.metricsMode == "minimal":
@@ -71,4 +72,6 @@ elif args.metricsMode == "all":
 
 print(f"{colors.WARNING}Printed all Metrics{colors.ENDC}")
 print(args)
+print(optionArray)
+
 #print(validateSortingOpt, validateMetricOpt)
