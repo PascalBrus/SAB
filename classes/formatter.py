@@ -54,8 +54,8 @@ class Formatter:
                       str(sorterOutput[key]["iterations"]),
                       str(sorterOutput[key]["recursions"]),
                       str(sorterOutput[key]["assignments"]),
-                      str(sorterOutput[key]["durationArray"]),
-                      str(sorterOutput[key]["normalizedDurationArray"]))
+                      str(sorterOutput[key]["durationArray"])[1:-1],
+                      str(sorterOutput[key]["normalizedDurationArray"])[1:-1])
       if(self._metricOption == "all"):
         #print("all")
         self.table.add_row(sorterOutput[key]["algorithmName"],
@@ -64,11 +64,9 @@ class Formatter:
                       str(sorterOutput[key]["iterations"]),
                       str(sorterOutput[key]["recursions"]),
                       str(sorterOutput[key]["assignments"]),
-                      str(sorterOutput[key]["durationArray"]),
-                      str(sorterOutput[key]["normalizedDurationArray"]),
-                      str(sorterOutput[key]["sortedNums"])
-
-                      )
+                      str(sorterOutput[key]["durationArray"])[1:-1],
+                      str(sorterOutput[key]["normalizedDurationArray"])[1:-1],
+                      str(sorterOutput[key]["sortedNums"])[1:-1])
       self.table.add_row(end_section=True)
 
   def createMetricOptions(self):
@@ -100,7 +98,6 @@ class Formatter:
           metricOptions["assignments"] = "Assignments"
           metricOptions["durationArray"] = "NNORMD Duration-Array"
           metricOptions["normalizedDurationArray"] = "Duration-Array"
-          metricOptions["sortedNums"] = "Sorted Number"
           if(self._metricOption == "all"):
             #print("all")
             metricOptions.clear()
@@ -132,7 +129,7 @@ class Formatter:
                         str(sorterOutput[next(iter(sorterOutput))]["loopCount"]),
                         str(sorterOutput[next(iter(sorterOutput))]["outliers"]),
                         str(sorterOutput[next(iter(sorterOutput))]["numberRange"]),
-                        str(sorterOutput[next(iter(sorterOutput))]["origionalNums"]))
+                        str(sorterOutput[next(iter(sorterOutput))]["origionalNums"])[1:-1])
     else:
       metaData.add_row("",
                         str(sorterOutput[next(iter(sorterOutput))]["elementCount"]), 
