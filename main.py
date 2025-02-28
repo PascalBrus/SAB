@@ -25,7 +25,7 @@ optionArray: Literal["bubble","merge","insert", "quick", "selection", "quickIter
 metricsArray: Literal["minimal", "default", "extended", "all"] = "default"
 
 ranges = {
-  "count": 50,
+  "count": 2000,
   "lowRange": -50,
   "highRange": 50
 }

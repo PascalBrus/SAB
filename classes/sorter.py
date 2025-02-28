@@ -1,6 +1,7 @@
 from classes.metrics import Metrics
 from classes.randomArray import RandomArray
-from config import OUTLIERS, LOOP, ROUNDING
+from config import LOOP
+import progressbar
 
 
 class Sorter: 
@@ -25,7 +26,8 @@ class Sorter:
   def nums(self):
     return self._nums.copy()
   def _runAlgorithms(self):
-      for x in range(0,LOOP):
+#
+      for x in progressbar.progressbar(range(0,LOOP)):
         self.metrics.startTimer()
         sorted = self._fn(self.nums, self.metrics)
         self.metrics.endTimer()
