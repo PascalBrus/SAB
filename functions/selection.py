@@ -1,6 +1,7 @@
 #Selection Sort
 def sort(nums, info):
     def selectionSort(nums, info):
+        info.tickRecursion()
         for i in range(len(nums)):
             info.tickIteration()
             smallest_idx = i

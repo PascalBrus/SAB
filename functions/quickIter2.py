@@ -9,7 +9,7 @@ def sort(nums, info):
 ### CODE AUS INTERNET KOPIERT
     def quickSortIter2(arr, l, h, info):
         def quickSortPation(arr, l, h, info):
-            info.tickRecursions()
+            info.tickRecursion()
             i = ( l - 1 )
             x = arr[h]
             for j in range(l, h):

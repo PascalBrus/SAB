@@ -1,6 +1,7 @@
 #Insertion Sort
 def sort(nums, info):
     def insertionSort(nums, info):
+        info.tickRecursion()
         for i in range(len(nums)):
             info.tickIteration()
             j = i

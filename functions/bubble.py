@@ -1,6 +1,7 @@
 #Bubble sort
 def sort(nums, info):
   def bubbleSort(nums, info):
+    info.tickRecursion()
     swapping = True
     end = len(nums)
     while swapping:

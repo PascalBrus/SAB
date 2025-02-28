@@ -7,9 +7,9 @@ def sort(nums, info):
 ### CODE AUS INTERNET KOPIERT
 ### CODE AUS INTERNET KOPIERT
     def quickSortIter(arr, low, high, info):
-        info.tickRecursions()
+        info.tickRecursion()
         def quickSortPartition( arr, low, high, info):
-            info.tickRecursions()
+            info.tickRecursion()
             i = (low - 1)         
             pivot = arr[high]     
             for j in range(low, high):

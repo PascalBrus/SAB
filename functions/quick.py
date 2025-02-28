@@ -1,9 +1,9 @@
 #Quick Sort
 def sort(nums, info):
   def quickSort(nums, low, high, info):
-    info.tickRecursions()
+    info.tickRecursion()
     def sortQuickPartition(nums, low, high):
-      info.tickRecursions()
+      info.tickRecursion()
       pivot = nums[high]
       i = low
       for j in range(low, high):

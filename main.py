@@ -47,8 +47,6 @@ if args.sortingOptions == None:
 
 
 
-
-
 #validateMetricOpt = validateArgs(sortingArray, args.sortingOptions).validate()
 #validateSortingOpt = validateArgs(metricsArray, args.metricsMode).validate()
 
