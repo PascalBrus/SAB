@@ -48,7 +48,6 @@ if not rangesValid:
 #   sys.exit()
 
 
-
 #validateMetricOpt = validateArgs(sortingArray, args.sortingOptions).validate()
 #validateSortingOpt = validateArgs(metricsArray, args.metricsMode).validate()
 
