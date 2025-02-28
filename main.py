@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 from typing import Literal
 from classes.benchmark import Benchmark
-from classes.misc import colors, validateArgs
+from classes.misc import colors, validateRanges
 import argparse
 import sys
 sortingArray = ["none", "bubble","merge","insert", "quick", "selection", "quickIter", "quickIter2"]
@@ -14,7 +14,8 @@ parser = argparse.ArgumentParser(prog="SA-Benchmark",
 #formatter_class=argparse.MetavarTypeHelpFormatter
 #parser.add_argument("-md", "--metaData", help="Prints Header Table above Benchmark", action="store_true")
 parser.add_argument("-m", "--metricsMode", help="set Metrics to display", choices=["minimal", "default", "extended", "alev", "all"], default="default")
-#parser.add_argument("-so", "--sortingOptions", help="set sorting Algorithms to use", default="none", choices=[ "none","bubble","merge","insert", "quick", "selection", "quickIter", "quickIter2"], nargs="+")
+parser.add_argument("-r", "--numberRanges", help="set the Number Array Ranges for the Benchmark", type=int, nargs="+", default=[50,-50,50])
+#parser.add_argument("-s", "--sortingOptions", help="set sorting Algorithms to use", default="none", choices=[ "none","bubble","merge","insert", "quick", "selection", "quickIter", "quickIter2"], nargs="+")
 # parser.add_argument("-m", "--", help="")
 # parser.add_argument("-d", "--", help="")
 # parser.add_argument("-e", "--", help="")
@@ -33,18 +34,25 @@ ranges = {
   "highRange": 50
 }
 
+
+rangesValid = validateRanges(args.numberRanges).validate()
+
+
 if args.metricsMode == None:
+  print("MetricsMode invalid!")
+  print(args.metricsMode)
+  sys.exit()
+if not rangesValid:
+  print("Range invalid!")
+  print(args.numberRanges)
   sys.exit()
 # if args.sortingOptions == None or args.sortingOptions == "none":
 #   sys.exit()
 
 
 
-
-
 #validateMetricOpt = validateArgs(sortingArray, args.sortingOptions).validate()
 #validateSortingOpt = validateArgs(metricsArray, args.metricsMode).validate()
-
 
 
 
