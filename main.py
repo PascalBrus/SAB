@@ -13,7 +13,7 @@ parser = argparse.ArgumentParser(prog="SA-Benchmark",
                                  )
 #formatter_class=argparse.MetavarTypeHelpFormatter
 #parser.add_argument("-md", "--metaData", help="Prints Header Table above Benchmark", action="store_true")
-parser.add_argument("-m", "--metricsMode", help="set Metrics to display", choices=["minimal", "default", "extended", "all"], default="default")
+parser.add_argument("-m", "--metricsMode", help="set Metrics to display", choices=["minimal", "default", "extended", "alev", "all"], default="default")
 #parser.add_argument("-so", "--sortingOptions", help="set sorting Algorithms to use", default="none", choices=[ "none","bubble","merge","insert", "quick", "selection", "quickIter", "quickIter2"], nargs="+")
 # parser.add_argument("-m", "--", help="")
 # parser.add_argument("-d", "--", help="")
@@ -24,7 +24,7 @@ args = parser.parse_args()
 
 ## Literal option muste be File name of sorting Function origin
 ## Sorting function must have 1 and only 1 Entry point named sort()
-optionArray: Literal["bubble","merge","insert", "quick", "selection", "quickIter", "quickIter2"] = ["bubble", "merge"]
+optionArray: Literal["none", "bubble","merge","insert", "quick", "selection", "quickIter", "quickIter2"] = ["bubble", "merge"]
 metricsArray: Literal["minimal", "default", "extended", "all"] = "default"
 
 ranges = {
@@ -58,8 +58,11 @@ elif args.metricsMode == "default":
 elif args.metricsMode == "extended":
   print("2")
   benchmark = Benchmark(optionArray, ranges, "extended")
-elif args.metricsMode == "all":
+elif args.metricsMode == "alev":
   print("3")
+  benchmark = Benchmark(optionArray, ranges, "alev")
+elif args.metricsMode == "all":
+  print("4")
   benchmark = Benchmark(optionArray, ranges, "all")
 
 

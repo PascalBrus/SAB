@@ -46,6 +46,16 @@ class Formatter:
                       str(sorterOutput[key]["iterations"]),
                       str(sorterOutput[key]["recursions"]),
                       str(sorterOutput[key]["assignments"]))
+      if(self._metricOption == "alev"):
+        #print("alev")
+        self.table.add_row(sorterOutput[key]["algorithmName"],
+                      str(sorterOutput[key]["normalizedDuration"]),
+                      str(sorterOutput[key]["nonNormalizedDuration"]),
+                      str(sorterOutput[key]["iterations"]),
+                      str(sorterOutput[key]["recursions"]),
+                      str(sorterOutput[key]["assignments"]),
+                      str(sorterOutput[key]["durationArray"]),
+                      str(sorterOutput[key]["normalizedDurationArray"]))
       if(self._metricOption == "all"):
         #print("all")
         self.table.add_row(sorterOutput[key]["algorithmName"],
@@ -65,12 +75,12 @@ class Formatter:
     metricOptions = dict()
     metricOptions["algorithmName"] = "Name"
     metricOptions["normalizedDuration"] = "Sorting Duration"
-    if(self._metricOption == "default" or self._metricOption == "extended" or self._metricOption == "all"):
+    if(self._metricOption == "default" or self._metricOption == "extended" or self._metricOption == "alev" or self._metricOption == "all"):
       #print("default")
       metricOptions["iterations"] = "Iterations"
       metricOptions["recursions"] = "Recursions"
       metricOptions["assignments"] = "Assignments"
-      if(self._metricOption == "extended" or self._metricOption == "all"):
+      if(self._metricOption == "extended" or self._metricOption == "alev" or self._metricOption == "all"):
         #print("extended")
         metricOptions.clear()
         metricOptions["algorithmName"] = "Name"
@@ -79,8 +89,8 @@ class Formatter:
         metricOptions["iterations"] = "Iterations"
         metricOptions["recursions"] = "Recursions"
         metricOptions["assignments"] = "Assignments"
-        if(self._metricOption == "all"):
-          #print("all")
+        if(self._metricOption == "all" or self._metricOption == "alev"):
+          #print("alev")
           metricOptions.clear()
           metricOptions["algorithmName"] = "Name"
           metricOptions["nonNormalizedDuration"] = "NNORMD Duration"
@@ -91,27 +101,44 @@ class Formatter:
           metricOptions["durationArray"] = "NNORMD Duration-Array"
           metricOptions["normalizedDurationArray"] = "Duration-Array"
           metricOptions["sortedNums"] = "Sorted Number"
+          if(self._metricOption == "all"):
+            #print("all")
+            metricOptions.clear()
+            metricOptions["algorithmName"] = "Name"
+            metricOptions["nonNormalizedDuration"] = "NNORMD Duration"
+            metricOptions["normalizedDuration"] = "Duration"
+            metricOptions["iterations"] = "Iterations"
+            metricOptions["recursions"] = "Recursions"
+            metricOptions["assignments"] = "Assignments"
+            metricOptions["durationArray"] = "NNORMD Duration-Array"
+            metricOptions["normalizedDurationArray"] = "Duration-Array"
+            metricOptions["sortedNums"] = "Sorted Number"
     return metricOptions
 
   def createMetaData(self, sorterOutput):
     if self._metricOption == "minimal" or self._metricOption == "default":
       return
+    
     metaData = Table(show_header=True, header_style="bold blue")
     metaData.add_column("Meta Data")
     metaData.add_column("Sample Size")
     metaData.add_column("Loop Count")
     metaData.add_column("Winsorisierung")
     metaData.add_column("Number Range")
-    metaData.add_column("UN-Sorted Numbers")
-
-
-    for key in sorterOutput.keys():
+    if self._metricOption == "all":
+      metaData.add_column("UN-Sorted Numbers")
       metaData.add_row("",
-                       str(sorterOutput[key]["elementCount"]), 
-                      str(sorterOutput[key]["loopCount"]),
-                      str(sorterOutput[key]["outliers"]),
-                      str(sorterOutput[key]["numberRange"]),
-                      str(sorterOutput[key]["origionalNums"]))
+                        str(sorterOutput[next(iter(sorterOutput))]["elementCount"]), 
+                        str(sorterOutput[next(iter(sorterOutput))]["loopCount"]),
+                        str(sorterOutput[next(iter(sorterOutput))]["outliers"]),
+                        str(sorterOutput[next(iter(sorterOutput))]["numberRange"]),
+                        str(sorterOutput[next(iter(sorterOutput))]["origionalNums"]))
+    else:
+      metaData.add_row("",
+                        str(sorterOutput[next(iter(sorterOutput))]["elementCount"]), 
+                        str(sorterOutput[next(iter(sorterOutput))]["loopCount"]),
+                        str(sorterOutput[next(iter(sorterOutput))]["outliers"]),
+                        str(sorterOutput[next(iter(sorterOutput))]["numberRange"]))
     self.console.print(metaData)
 
   def formatMetrics(self, sorterOutput):
