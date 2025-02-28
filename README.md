@@ -16,26 +16,26 @@ sab [ -m <metricsMode> { minimal, default, extended, alev, all } ]
 
 **by Default sortingOptions will have the upper functions available see [Adding your own Sorting Algorithms](#placeholder) to add more wich are gonna be accessable like above**
 
-## MetricsMode
+### MetricsMode
 
 Metrics Mode is an optional parameter when using sab. The default setting of it is set to `metricsMode: default`.
 
-### Every option is gonna build opon the last one. So default will have every Metric minimal does plus the ones listed below.
+#### Every option is gonna build opon the last one. So default will have every Metric minimal does plus the ones listed below.
 
-#### minimal
+##### minimal
 
 - [Name](#Name)
 - [Sorting Duration]()
 
-#### default
+##### default
 
 - [Iterations]()
 - [Recursions]()
 - [Assignments]()
 
-#### extended
+##### extended
 
-##### From Extended onwards you are gonna get a new Table with "Meta Data"
+###### From Extended onwards you are gonna get a new Table with "Meta Data"
 
 - Meta Data:
   - [Sample Size]()
@@ -43,7 +43,7 @@ Metrics Mode is an optional parameter when using sab. The default setting of it 
   - [Winsorization]()
   - [Number Range]()
 
-#### alev
+##### alev
 
 (**AL**most-**EV**erything)
 
@@ -51,23 +51,23 @@ Metrics Mode is an optional parameter when using sab. The default setting of it 
 - [NNORMD Duration-Array]() (Non Normalized Duration Array)
 - [Duration-Array]()
 
-#### all
+##### all
 
 - Meta Data:
   - [UN-Sorted Numbers]()
 - [Sorted Numbers]()
 
-## Number Ranges
+### Number Ranges
 
 The Number Ranges is an optional parameter when using sab and sets the [Sample Size]() and lower and higher threasholds of [Number Range](). The default of it is set to `Sample Size: 50` / `lower number treashold: -50` / `upper number threashold: 50`
 
-### The parameter Number Ranges is gonna take 3 Integer.
+#### The parameter Number Ranges is gonna take 3 Integer.
 
 1. The first Number is gonna set the [Sample Size]() of the benchmark test
 2. The second Number is gonna set the lower threashold of the [Number Range]()
 3. The third Number is gonna set the upper threashold of the [Number Range]()
 
-## Sorting Options
+### Sorting Options
 
 > Sorting Options is a **mandatory** parameter when using sab. It has no default Value.
 
