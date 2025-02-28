@@ -1,4 +1,4 @@
-# SAB- Sorting Algorithm Benchmark
+# SAB - Sorting Algorithm Benchmark
 
 ## Usage:
 
@@ -17,6 +17,8 @@ sab [ -m <metricsMode> { minimal, default, extended, alev, all } ]
 **by Default sortingOptions will have the upper functions available see [Adding your own Sorting Algorithms](#placeholder) to add more wich are gonna be accessable like above**
 
 ## MetricsMode
+
+Metrics Mode is an optional parameter when using sab. The default setting of it is set to `metricsMode: default`.
 
 ### Every option is gonna build opon the last one. So default will have every Metric minimal does plus the ones listed below.
 
@@ -54,6 +56,40 @@ sab [ -m <metricsMode> { minimal, default, extended, alev, all } ]
 - Meta Data:
   - [UN-Sorted Numbers]()
 - [Sorted Numbers]()
+
+## Number Ranges
+
+The Number Ranges is an optional parameter when using sab and sets the [Sample Size]() and lower and higher threasholds of [Number Range](). The default of it is set to `Sample Size: 50` / `lower number treashold: -50` / `upper number threashold: 50`
+
+### The parameter Number Ranges is gonna take 3 Integer.
+
+1. The first Number is gonna set the [Sample Size]() of the benchmark test
+2. The second Number is gonna set the lower threashold of the [Number Range]()
+3. The third Number is gonna set the upper threashold of the [Number Range]()
+
+## Sorting Options
+
+> Sorting Options is a **mandatory** parameter when using sab. It has no default Value.
+
+Default Sorting Algorithms avialable are:
+
+- bubble
+- merge
+- insert
+- quick
+- selection
+- quickIter
+- quickIter2
+
+For an extensive list of allowed values use `sab.py -h`. Allowed values are gonna depend on your /functions directory as they are dynamically read from there and added as possible values. <br>See [Adding your own Sorting Algorithms](#placeholder) for a Guide on how to add your own/custom sorting Algorithms.
+
+## Metrics
+
+Metrics is the data gathered during the sorting process. Its gonna be presented in a green Table after successfully running the programm.
+
+#### Meta Data
+
+Meta Data is the Data wich is displayed from the [metricsMode](#MetricsMode) option [extended](#extended) and onwards. Its gonna be printed ABOVE the green metrics table as a blue table and will contain meta data applying to every sorting algorithm tested.
 
 ## Metrics explained
 
