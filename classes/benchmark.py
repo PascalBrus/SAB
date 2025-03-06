@@ -5,16 +5,16 @@ from classes.sorter import Sorter
 
 
 class Benchmark:
-  def __init__(self, options, ranges, metricsArray, recursionDepth=1000):
+  def __init__(self, functionRefs, ranges, metricsArray, recursionDepth=1000):
     self._recursionDepth = recursionDepth
     self._sorterArray = []
     self._sorterOutput = dict()
     self.importedSorter = None
     sys.setrecursionlimit(self._recursionDepth)
     self.numsArray = RandomArray(ranges["count"], ranges["lowRange"], ranges["highRange"]).array()
-    for option in options:
-      self.importedSorter = self.importSorter(option)
-      self._sorterArray.append(Sorter(self.importedSorter.sort, ranges, option, self.numsArray))
+    for function in functionRefs:
+      self.importedSorter = functionRefs[function]
+      self._sorterArray.append(Sorter(self.importedSorter.sort, ranges, function, self.numsArray))
       #self._sorterArray.append(Sorter(getattr(self.importedSorter, "sort"), ranges))
       
     for sorter in self._sorterArray:
@@ -31,11 +31,6 @@ class Benchmark:
   def recursionDepth(self, value):
     self._recursionDepth = value
     sys.setrecursionlimit(self._recursionDepth)
-
-  def importSorter(self, option):
-    moduleName = "functions."+option
-    #print(option)
-    return __import__(moduleName, fromlist=["sort"])
 
 def sortBubble(nums):
     swapping = True
