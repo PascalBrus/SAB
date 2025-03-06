@@ -3,24 +3,25 @@ import os
 
 class DynamicImport:
   def __init__(self, source="functions"):
-    self.SorterFunctionNames = self.getSorterFunctionNames()
-    self.SorterFunctions = self.runImport()
+    self.sorterFunctions = self.getSorterFunctionNames()
+    #self.SorterFunctions = self.runImport()
 
   def returnImport(self):
-    return self.SorterFunctionNames, self.SorterFunctions
+    return self.sorterFunctions
   
   def getSorterFunctionNames(self):
     files = [f for f in os.listdir("functions") if os.path.isfile("functions/"+f)]
-    sortingOptionNames = []
+    sortingOptionNames = dict()
     for file in files:
-      sortingOptionNames.append(file[:-3])
+      sortingOptionNames[file[:-3]] = self.runImport(file[:-3])
     return sortingOptionNames
 
-  def runImport(self):
-    imports = []
-    for function in self.SorterFunctionNames:
-      imports.append(import_module("functions."+ function))
-    return imports
+  def runImport(self, function):
+    return import_module("functions."+ function)
   
-  def filterRefs(self):
-    pass
+  def filterFunctionRefs(self, sorterFunctions, filters):
+    for function in list(sorterFunctions):
+      if function not in filters:
+        sorterFunctions.pop(function)
+    return sorterFunctions
+      
