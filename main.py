@@ -13,6 +13,7 @@ parser = argparse.ArgumentParser(prog="SA-Benchmark",
                                  )
 #formatter_class=argparse.MetavarTypeHelpFormatter
 #parser.add_argument("-md", "--metaData", help="Prints Header Table above Benchmark", action="store_true")
+parser.add_argument("-d", "--debugMode", help="Turns on some debug Information", action="store_true", default=False)
 parser.add_argument("-m", "--metricsMode", help="set Metrics to display", choices=["minimal", "default", "extended", "alev", "all"], default="default")
 parser.add_argument("-r", "--numberRanges", help="set the Number Array Ranges for the Benchmark", type=int, nargs="+", default=[50,-50,50])
 parser.add_argument("-s", "--sortingOptions", help="set sorting Algorithms to use", choices=["bubble","merge","insert", "quick", "selection", "quickIter", "quickIter2"], nargs="+", required=True)
@@ -25,7 +26,7 @@ optionArray: Literal["bubble","merge","insert", "quick", "selection", "quickIter
 metricsArray: Literal["minimal", "default", "extended", "all"] = "default"
 
 ranges = {
-  "count": 2000,
+  "count": 250,
   "lowRange": -50,
   "highRange": 50
 }
@@ -72,7 +73,8 @@ elif args.metricsMode == "all":
 
 
 print(f"{colors.WARNING}Printed all Metrics{colors.ENDC}")
-print(args)
-print(optionArray)
+if (args.debugMode):
+  print(args)
+  print(optionArray)
 
 #print(validateSortingOpt, validateMetricOpt)
