@@ -6,11 +6,11 @@ from classes.misc import colors, validateRanges
 import argparse
 import sys
 from importlib import import_module
-import os
 
 
 ## Sorting function must have 1 and only 1 Entry point named sort()
-dynamicImportFunctionNames, dynamicImportFunctions = DynamicImport().returnImport()
+dynamicImpoter = DynamicImport()
+dynamicImportedFunctions = dynamicImpoter.returnImport()
 
 parser = argparse.ArgumentParser(prog="SA-Benchmark", 
                                  description="Programm takes sorting functions present in its functions directory and benchmarks those.",
@@ -21,7 +21,7 @@ parser = argparse.ArgumentParser(prog="SA-Benchmark",
 parser.add_argument("-d", "--debugMode", help="Turns on some debug Information", action="store_true", default=False)
 parser.add_argument("-m", "--metricsMode", help="set Metrics to display", choices=["minimal", "default", "extended", "alev", "all"], default="default")
 parser.add_argument("-r", "--numberRanges", help="set the Number Array Ranges for the Benchmark", type=int, nargs="+", default=[50,-50,50])
-parser.add_argument("-s", "--sortingOptions", help="set sorting Algorithms to use", choices=dynamicImportFunctionNames, nargs="+", required=True)
+parser.add_argument("-s", "--sortingOptions", help="set sorting Algorithms to use", choices=dynamicImportedFunctions.keys(), nargs="+", required=True)
 args = parser.parse_args()
 
 ranges = {
@@ -38,9 +38,7 @@ if not rangesValid:
   print(args.numberRanges)
   sys.exit()
 
-for ref in dynamicImportFunctions:
-  #name = getattr(ref, 'name')
-  print(str(ref))
+functionRefs = dynamicImpoter.filterFunctionRefs(dynamicImportedFunctions, args.sortingOptions)
 benchmark = Benchmark(args.sortingOptions, ranges, args.metricsMode)
 
 
