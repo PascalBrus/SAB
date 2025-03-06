@@ -5,7 +5,7 @@ from classes.sorter import Sorter
 
 
 class Benchmark:
-  def __init__(self, options, ranges, metricsArray=[], recursionDepth=1000):
+  def __init__(self, options, ranges, metricsArray, recursionDepth=1000):
     self._recursionDepth = recursionDepth
     self._sorterArray = []
     self._sorterOutput = dict()
