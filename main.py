@@ -39,7 +39,7 @@ if not rangesValid:
   sys.exit()
 
 functionRefs = dynamicImpoter.filterFunctionRefs(dynamicImportedFunctions, args.sortingOptions)
-benchmark = Benchmark(args.sortingOptions, ranges, args.metricsMode)
+benchmark = Benchmark(functionRefs, ranges, args.metricsMode)
 
 
 print(f"{colors.WARNING}Printed all Metrics{colors.ENDC}")
