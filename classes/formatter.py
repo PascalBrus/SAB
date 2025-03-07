@@ -13,6 +13,7 @@ class Formatter:
     self._metricOption = metricOption
     self.mode = " µs"
     self.adjustTimes(sorterOutput)
+    self.formatSortingMetricNumbers(sorterOutput)
     self._metricOptionArray = self.createMetricOptions()
     self.console = Console()
     # for element in sorterOutput:
@@ -27,6 +28,14 @@ class Formatter:
     #adds columns to table
     for metrics in self._metricOptionArray.values():
       self.table.add_column(metrics)
+
+  def formatSortingMetricNumbers(self, sorterOutput):
+    for key in sorterOutput.keys():
+      sorterOutput[key]["iterations"] = "{:,}".format(sorterOutput[key]["iterations"]).replace("," ,".")
+      sorterOutput[key]["recursions"] = "{:,}".format(sorterOutput[key]["recursions"]).replace("," ,".")
+      sorterOutput[key]["assignments"] = "{:,}".format(sorterOutput[key]["assignments"]).replace("," ,".")
+
+
 
   def colorTimes(self, sorterOutput):
     min = float("inf");
@@ -61,8 +70,6 @@ class Formatter:
         self.mode = " ms"
         continue 
 
-        
-
   def adjustTimes(self, sorterOutput):
     #checks how long it took and converts it from µs to either µs, ms or s
     self.setMode(sorterOutput)
@@ -71,7 +78,6 @@ class Formatter:
         sorterOutput[key]["normalizedDuration"] = float(sorterOutput[key]["normalizedDuration"]) / 1000
       elif self.mode == " s":
         sorterOutput[key]["normalizedDuration"] = float(sorterOutput[key]["normalizedDuration"]) / 1000 / 1000
-
 
   def createTableRows(self, sorterOutput):
     
