@@ -2,6 +2,7 @@ from classes.metrics import Metrics
 from classes.randomArray import RandomArray
 from config import LOOP
 import progressbar
+import sys, os
 
 
 class Sorter: 
@@ -29,11 +30,13 @@ class Sorter:
   def _runAlgorithms(self):
       for x in progressbar.progressbar(range(0,LOOP)):
         self.metrics.startTimer()
-        sorted = self._fn(self.nums, self.metrics)
+        sorted = self._fn.sort(self.nums, self.metrics)
         self.metrics.endTimer()
 
         if (sorted != self.sortedNumsRef):
-          return ValueError
+          os.system('clear')
+          print("SORTING FAILED CHECK THIS ALGORITHM: " + str(self._fn))
+          sys.exit()
         self.metrics.addSortedNums(sorted)
       return sorted, self.metrics.normalizedDuration
 

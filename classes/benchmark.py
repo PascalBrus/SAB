@@ -14,7 +14,7 @@ class Benchmark:
     self.numsArray = RandomArray(ranges["count"], ranges["lowRange"], ranges["highRange"]).array()
     for function in functionRefs:
       self.importedSorter = functionRefs[function]
-      self._sorterArray.append(Sorter(self.importedSorter.sort, ranges, function, self.numsArray))
+      self._sorterArray.append(Sorter(self.importedSorter, ranges, function, self.numsArray))
       #self._sorterArray.append(Sorter(getattr(self.importedSorter, "sort"), ranges))
       
     for sorter in self._sorterArray:
