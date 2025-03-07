@@ -3,6 +3,7 @@ from classes.misc import colors
 from rich.console import Console
 from rich.table import Table
 from rich import print
+from classes.misc import colors
 
 # metricsArray: Literal["minimal", "default", "extended", "all"] = ["default"]
 
@@ -24,7 +25,32 @@ class Formatter:
     for metrics in self._metricOptionArray.values():
       self.table.add_column(metrics)
 
+  def colorTimes(self, sorterOutput):
+    min = float("inf");
+    minKey = ""
+    max = float("-inf")
+    maxKey = ""
+    for key in sorterOutput.keys():
+      if sorterOutput[key]["normalizedDuration"] > max:
+        max = sorterOutput[key]["normalizedDuration"]
+        maxKey = key
+      if sorterOutput[key]["normalizedDuration"] < min:
+        min = sorterOutput[key]["normalizedDuration"]
+        minKey = key
+
+    if min == max and minKey == maxKey:
+      min = float("inf")
+      minKey = ""
+    else:
+      sorterOutput[minKey]["normalizedDuration"] = f"[bold green]{sorterOutput[minKey]['normalizedDuration']}[/bold green]"
+    sorterOutput[maxKey]["normalizedDuration"] = f"[bold red]{sorterOutput[maxKey]['normalizedDuration']}[/bold red]"
+
+    return sorterOutput
+
   def createTableRows(self, sorterOutput):
+    
+    sorterOutput = self.colorTimes(sorterOutput)
+
     for key in sorterOutput.keys():
       #print(self._metricOption)
       if(self._metricOption == "minimal"):
@@ -144,7 +170,5 @@ class Formatter:
     self.createMetaData(sorterOutput)
     self.createTableColumns()
     self.createTableRows(sorterOutput)
-
-
     
     self.console.print(self.table)
