@@ -16,11 +16,6 @@ class Formatter:
     self.formatSortingMetricNumbers(sorterOutput)
     self._metricOptionArray = self.createMetricOptions()
     self.console = Console()
-    # for element in sorterOutput:
-    #    if isinstance(element, dict):
-    #     for subelement, value in element.items():
-    #       print(f"{subelement}: {value}")
-    # print("\n\n")
     self.table = Table(show_header=True, header_style="bold green")
     self.formatMetrics(sorterOutput)
 

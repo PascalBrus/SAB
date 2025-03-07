@@ -31,17 +31,3 @@ class Benchmark:
   def recursionDepth(self, value):
     self._recursionDepth = value
     sys.setrecursionlimit(self._recursionDepth)
-
-def sortBubble(nums):
-    swapping = True
-    end = len(nums)
-    while swapping:
-        swapping = False
-        for i in range(1, end):
-            if nums[i - 1] > nums[i]:
-                temp = nums[i - 1]
-                nums[i - 1] = nums[i]
-                nums[i] = temp
-                swapping = True
-        end -= 1
-    return nums

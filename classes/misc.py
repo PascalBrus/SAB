@@ -15,18 +15,6 @@ class Timestamp:
     self.endTime = time.time()
     return (self.endTime - self.startTime)*1000*1000
 
-
-# class validateArgs:
-#   def __init__(self, ogArgs, args):
-#     self.ogArgs = set(ogArgs)
-#     self.args = args
-  
-#   def validate(self) -> bool:
-#     for arg in self.args:
-#       if arg not in self.ogArgs:
-#         return False
-#     return True
-
 class validateRanges:
   def __init__(self, ranges):
     self.ranges = ranges

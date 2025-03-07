@@ -6,9 +6,6 @@ import sys, os
 
 
 class Sorter: 
-  #metadata for sorting functions like what to track for them, like recursions for quick sort but doesnt make sense for bubble???
-  #sorterFN the Sorter Function
-  #ranged Dict with randomArray ranges 
   def __init__(self, sorterFN, ranges, option, numsArray=[]):
      self._ranges = ranges
      if(numsArray == []):
