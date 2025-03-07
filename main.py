@@ -25,7 +25,7 @@ parser.add_argument("-s", "--sortingOptions", help="set sorting Algorithms to us
 args = parser.parse_args()
 
 ranges = {
-  "count": 1000,
+  "count": 250,
   "lowRange": -50,
   "highRange": 50
 }
