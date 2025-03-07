@@ -10,7 +10,6 @@ class Metrics:
     self.iteration = 0
     self.recursions = 0
     self.assignments = 0
-    #self.elementCount = len(nums)
     self.durationArray = []
     self.normalizedDurationArray = []
     self.algorithmName = option
@@ -43,12 +42,8 @@ class Metrics:
   def normalizeTimes(self):
      array = self.durationArray.copy()
      for x in range(0, OUTLIERS):
-      #print("min: "+ str(array.index(min(self.durationArray))))
-      #print("max: "+ str(array.index(max(self.durationArray))))
-      #print("Normalized Array BEFORE pop: " + str(array))
       array.pop(array.index(min(array))-1)
       array.pop(array.index(max(array))-1)
-      #print("Normalized Array AFTER pop: " + str(array))
      self.normalizedDurationArray = array
      return array
   
