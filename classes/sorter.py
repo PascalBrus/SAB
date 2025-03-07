@@ -20,6 +20,7 @@ class Sorter:
        self._nums = numsArray
      self._fn = sorterFN
      self.metrics = Metrics(self.nums, option, self._ranges)
+     self.sortedNumsRef = sorted(self._nums)
 
 
   @property
@@ -30,7 +31,10 @@ class Sorter:
         self.metrics.startTimer()
         sorted = self._fn(self.nums, self.metrics)
         self.metrics.endTimer()
-      self.metrics.addSortedNums(sorted)
+
+        if (sorted != self.sortedNumsRef):
+          return ValueError
+        self.metrics.addSortedNums(sorted)
       return sorted, self.metrics.normalizedDuration
 
   def returnBenchmark(self):
