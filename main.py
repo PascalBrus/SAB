@@ -21,11 +21,11 @@ parser = argparse.ArgumentParser(prog="SA-Benchmark",
 parser.add_argument("-d", "--debugMode", help="Turns on some debug Information", action="store_true", default=False)
 parser.add_argument("-m", "--metricsMode", help="set Metrics to display", choices=["minimal", "default", "extended", "alev", "all"], default="default")
 parser.add_argument("-r", "--numberRanges", help="set the Number Array Ranges for the Benchmark", type=int, nargs="+", default=[50,-50,50])
-parser.add_argument("-s", "--sortingOptions", help="set sorting Algorithms to use", choices=dynamicImportedFunctions.keys(), nargs="+", required=True)
+parser.add_argument("-i", "--includeSortAlgo", help="set sorting Algorithms to use", choices=dynamicImportedFunctions.keys(), nargs="+", required=True)
 args = parser.parse_args()
 
 ranges = {
-  "count": 1000,
+  "count": 250,
   "lowRange": -50,
   "highRange": 50
 }
@@ -48,5 +48,3 @@ if (args.debugMode):
   print(args.sortingOptions)
 
 #print(validateSortingOpt, validateMetricOpt)
-
-
