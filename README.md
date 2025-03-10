@@ -71,6 +71,17 @@ The Number Ranges is an optional parameter when using sab and sets the [Sample S
 
 > Sorting Options is a **mandatory** parameter when using sab. It has no default Value.
 
+There are 2 Ways to determin wich algorithms to run.
+
+1. Include [-i ; --include]
+2. Exclude [-e ; --exclude]
+
+Include: With the include option you say wich Algorithm you want to **include** for your Benchmark
+
+Exclude: With the exclude option you say wich Algorith you wanna **exclude** from your Benchmark. Therefore it will run **all** avialable Algorithm excluding the ones you set.
+
+> Include | Exclude are mutually exclusive. Means you can only choose one mode. If no option is present the Benchmark will include all Algorithms.
+
 Default Sorting Algorithms avialable are:
 
 - bubble
@@ -148,5 +159,20 @@ The un-sorted Numbers is the origional Number Array before sorting it.<br>Its hi
 ### Sorted Numbers:
 
 The Sorted Numbers are the Numbers after being sorted by the Algorithm.<br>Its hidden in every [Metrics Option]() other than [all]() because of the usually very high [Sample Size]()
+
+## Adding your own Sortig Algorithm:
+
+If you wanna add your own sorting Algorithm you only need to add a new python file into the functions directory. The Name of the Algorithm is the name of the file you add. The File should have following syntax:
+
+```
+def sort(info numbers):
+  def your_sort_algorithm(info, nums):
+    #Stuff
+    return sorted_numbers
+
+return your_sort_algorithm(info, nums)
+```
+
+Your sorting algorithm is then gonna be listed under the help syntax as choice when trying to use SAB or with `"python3 main.py -h"`
 
 # UNDER CONSTRUCTION
