@@ -21,16 +21,26 @@ parser = argparse.ArgumentParser(prog="SA-Benchmark",
 parser.add_argument("-d", "--debugMode", help="Turns on some debug Information", action="store_true", default=False)
 parser.add_argument("-m", "--metricsMode", help="set Metrics to display", choices=["minimal", "default", "extended", "alev", "all"], default="default")
 parser.add_argument("-r", "--numberRanges", help="set the Number Array Ranges for the Benchmark", type=int, nargs="+", default=[50,-50,50])
-parser.add_argument("-s", "--sortingOptions", help="set sorting Algorithms to use", choices=dynamicImportedFunctions.keys(), nargs="+", required=True)
+mutualGroup = parser.add_mutually_exclusive_group()
+mutualGroup.add_argument("-i", "--includeSortAlgo", help="set sorting Algorithms to use", choices=dynamicImportedFunctions.keys(), nargs="+")
+mutualGroup.add_argument("-e", "--excludeSortAlgo", help="exclude sorting Algorithms to use", choices=dynamicImportedFunctions.keys(), nargs="+")
+
 args = parser.parse_args()
 
+
 ranges = {
-  "count": 1000,
+  "count": 250,
   "lowRange": -50,
   "highRange": 50
 }
 
 rangesValid = validateRanges(args.numberRanges).validate()
+if args.includeSortAlgo == None and args.excludeSortAlgo == None:
+  functionRefs = dynamicImportedFunctions
+if args.includeSortAlgo != None:
+  functionRefs= dynamicImpoter.includeFunctionRefs(dynamicImportedFunctions, args.includeSortAlgo)
+if args.excludeSortAlgo != None:
+  functionRefs= dynamicImpoter.excludeFunctionRefs(dynamicImportedFunctions, args.excludeSortAlgo)
 
 
 if not rangesValid:
@@ -38,7 +48,6 @@ if not rangesValid:
   print(args.numberRanges)
   sys.exit()
 
-functionRefs = dynamicImpoter.filterFunctionRefs(dynamicImportedFunctions, args.sortingOptions)
 benchmark = Benchmark(functionRefs, ranges, args.metricsMode)
 
 
@@ -48,5 +57,3 @@ if (args.debugMode):
   print(args.sortingOptions)
 
 #print(validateSortingOpt, validateMetricOpt)
-
-
