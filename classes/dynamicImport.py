@@ -19,9 +19,15 @@ class DynamicImport:
   def runImport(self, function):
     return import_module("functions."+ function)
   
-  def filterFunctionRefs(self, sorterFunctions, filters):
+  def includeFunctionRefs(self, sorterFunctions, filters):
     for function in list(sorterFunctions):
       if function not in filters:
+        sorterFunctions.pop(function)
+    return sorterFunctions
+  
+  def excludeFunctionRefs(self, sorterFunctions, filters):
+    for function in list(sorterFunctions):
+      if function in filters:
         sorterFunctions.pop(function)
     return sorterFunctions
       
