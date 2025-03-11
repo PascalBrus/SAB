@@ -43,12 +43,13 @@ if args.excludeSortAlgo != None:
   functionRefs= dynamicImpoter.excludeFunctionRefs(dynamicImportedFunctions, args.excludeSortAlgo)
 
 
+
 if not rangesValid:
   print("Range invalid!")
   print(args.numberRanges)
   sys.exit()
 
-benchmark = Benchmark(functionRefs, ranges, args.metricsMode)
+benchmark = Benchmark(functionRefs, args.numberRanges, args.metricsMode)
 
 
 print(f"{colors.WARNING}Printed all Metrics{colors.ENDC}")

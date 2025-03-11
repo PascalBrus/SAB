@@ -192,7 +192,7 @@ class Formatter:
     self.console.print(metaData)
 
   def formatMetrics(self, sorterOutput):
-    #os.system('clear')
+    os.system('clear')
 
     self.createMetaData(sorterOutput)
     self.createTableColumns()
