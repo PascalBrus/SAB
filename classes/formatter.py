@@ -1,10 +1,7 @@
 import os
-from queue import Full
-from classes.misc import colors
 from rich.console import Console
 from rich.table import Table
 from rich import print
-from classes.misc import colors
 
 # metricsArray: Literal["minimal", "default", "extended", "all"] = ["default"]
 
@@ -37,6 +34,7 @@ class Formatter:
     print(self.functionRefCount)
     if(self.functionRefCount <= 1):
       return sorterOutput
+
     min = float("inf");
     minKey = ""
     max = float("-inf")

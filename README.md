@@ -1,5 +1,15 @@
 # SAB - Sorting Algorithm Benchmark
 
+## What is SAB?
+
+SAB - **S**orting**A**lgorithm**B**enchmark
+
+> First of all a disclaimer. This is only a silly school project, so dont expect this to be any good whatsoever.
+
+This Project is a sorting algorithm benchmark. It comes with a couple precoded algorithm written by me, and 2 copy-pasted from the webs.
+You can easily add your own algorithm to test. Simply follow [Adding your own Sorting Algorithms](#Adding-your-own-Sortig-Algorithm) for a little guide.
+You dont need to add any metrics if you dont want to.
+
 ## Usage:
 
 ```
@@ -162,6 +172,8 @@ The Sorted Numbers are the Numbers after being sorted by the Algorithm.<br>Its h
 
 ## Adding your own Sortig Algorithm:
 
+### Adding it into functions directory
+
 If you wanna add your own sorting Algorithm you only need to add a new python file into the functions directory. The Name of the Algorithm is the name of the file you add. The File should have following syntax:
 
 ```
@@ -174,5 +186,7 @@ return your_sort_algorithm(info, nums)
 ```
 
 Your sorting algorithm is then gonna be listed under the help syntax as choice when trying to use SAB or with `"python3 main.py -h"`
+
+### Metrics for your own Algorithm
 
 # UNDER CONSTRUCTION

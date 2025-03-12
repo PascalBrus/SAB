@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-from typing import Literal
 from classes.benchmark import Benchmark
 from classes.dynamicImport import DynamicImport
 from classes.misc import colors, validateRanges
