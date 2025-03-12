@@ -9,9 +9,10 @@ from classes.misc import colors
 # metricsArray: Literal["minimal", "default", "extended", "all"] = ["default"]
 
 class Formatter:
-  def __init__(self, sorterOutput, metricOption):
+  def __init__(self, sorterOutput, metricOption, functionRefs):
     self._metricOption = metricOption
     self.mode = " µs"
+    self.functionRefCount = len(functionRefs)
     self.adjustTimes(sorterOutput)
     self.formatSortingMetricNumbers(sorterOutput)
     self._metricOptionArray = self.createMetricOptions()
@@ -33,6 +34,9 @@ class Formatter:
 
 
   def colorTimes(self, sorterOutput):
+    print(self.functionRefCount)
+    if(self.functionRefCount <= 1):
+      return sorterOutput
     min = float("inf");
     minKey = ""
     max = float("-inf")

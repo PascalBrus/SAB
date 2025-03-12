@@ -21,7 +21,7 @@ class Benchmark:
        sorter.returnBenchmark()
        output = sorter.metrics.printMetrics()
        self._sorterOutput[output["algorithmName"]] = output
-    self.formatter = Formatter(self._sorterOutput, metricsArray)
+    self.formatter = Formatter(self._sorterOutput, metricsArray, functionRefs)
 
   @property
   def recursionDepth(self):
