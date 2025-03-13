@@ -22,13 +22,6 @@ mutualGroup.add_argument("-e", "--excludeSortAlgo", help="exclude sorting Algori
 
 args = parser.parse_args()
 
-
-ranges = {
-  "count": 250,
-  "lowRange": -50,
-  "highRange": 50
-}
-
 rangesValid = validateRanges(args.numberRanges).validate()
 if args.includeSortAlgo == None and args.excludeSortAlgo == None:
   functionRefs = dynamicImportedFunctions

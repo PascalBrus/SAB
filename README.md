@@ -189,4 +189,23 @@ Your sorting algorithm is then gonna be listed under the help syntax as choice w
 
 ### Metrics for your own Algorithm
 
+If you want to add metrics to your own Sorting Algorithm you will need to do those yourself. You can look into the existing Algos to look for guidance where to place each metric.
+
+#### The Info Object
+
+You will need to pass the info object into your sort algorithm to gain access to the methods to gather metrics.
+The info object is an instance of the Metrics class.
+
+#### Iterations
+
+You wanna call info.Iterations() at the start of every loop inside your Algorithm.
+
+#### Recursions
+
+You wanna call Recursion at the start of your Algorithm. If you use Helper functions call info.Recursion() at the start of each of those too.
+
+#### Assignments
+
+You wanna call info.Assignmnts() every time you manipulate the Array if you mutate in place or if you put a number into a new array or if you swap numbers thats also an Assignment.
+
 # UNDER CONSTRUCTION
