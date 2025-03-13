@@ -73,8 +73,10 @@ class Formatter:
     for key in sorterOutput.keys():
       if self.mode == " ms":
         sorterOutput[key]["normalizedDuration"] = float(sorterOutput[key]["normalizedDuration"]) / 1000
+        sorterOutput[key]["nonNormalizedDuration"] = float(sorterOutput[key]["nonNormalizedDuration"]) / 1000
       elif self.mode == " s":
         sorterOutput[key]["normalizedDuration"] = float(sorterOutput[key]["normalizedDuration"]) / 1000 / 1000
+        sorterOutput[key]["nonNormalizedDuration"] = float(sorterOutput[key]["nonNormalizedDuration"]) / 1000 / 1000
 
   def createTableRows(self, sorterOutput):
     
@@ -97,7 +99,7 @@ class Formatter:
           #print("extended")
           self.table.add_row(sorterOutput[key]["algorithmName"],
                       str(sorterOutput[key]["normalizedDuration"])+self.mode,
-                      str(sorterOutput[key]["nonNormalizedDuration"])+" ms",
+                      str(sorterOutput[key]["nonNormalizedDuration"])+self.mode,
                       str(sorterOutput[key]["iterations"]),
                       str(sorterOutput[key]["recursions"]),
                       str(sorterOutput[key]["assignments"]))
@@ -105,7 +107,7 @@ class Formatter:
         #print("alev")
         self.table.add_row(sorterOutput[key]["algorithmName"],
                       str(sorterOutput[key]["normalizedDuration"])+self.mode,
-                      str(sorterOutput[key]["nonNormalizedDuration"])+" ms",
+                      str(sorterOutput[key]["nonNormalizedDuration"])+self.mode,
                       str(sorterOutput[key]["iterations"]),
                       str(sorterOutput[key]["recursions"]),
                       str(sorterOutput[key]["assignments"]),
@@ -115,7 +117,7 @@ class Formatter:
         #print("all")
         self.table.add_row(sorterOutput[key]["algorithmName"],
                       str(sorterOutput[key]["normalizedDuration"])+self.mode,
-                      str(sorterOutput[key]["nonNormalizedDuration"])+" ms",
+                      str(sorterOutput[key]["nonNormalizedDuration"])+self.mode,
                       str(sorterOutput[key]["iterations"]),
                       str(sorterOutput[key]["recursions"]),
                       str(sorterOutput[key]["assignments"]),
@@ -138,7 +140,7 @@ class Formatter:
         metricOptions.clear()
         metricOptions["algorithmName"] = "Name"
         metricOptions["normalizedDuration"] = f"Duration in{self.mode}"
-        metricOptions["nonNormalizedDuration"] = "NNORMD Duration in ms"
+        metricOptions["nonNormalizedDuration"] = f"NNORMD Duration in{self.mode}"
         metricOptions["iterations"] = "Iterations"
         metricOptions["recursions"] = "Recursions"
         metricOptions["assignments"] = "Assignments"
@@ -146,7 +148,7 @@ class Formatter:
           #print("alev")
           metricOptions.clear()
           metricOptions["algorithmName"] = "Name"
-          metricOptions["nonNormalizedDuration"] = "NNORMD Duration in ms"
+          metricOptions["nonNormalizedDuration"] = f"NNORMD Duration in{self.mode}"
           metricOptions["normalizedDuration"] = f"Duration in{self.mode}"
           metricOptions["iterations"] = "Iterations"
           metricOptions["recursions"] = "Recursions"
@@ -157,7 +159,7 @@ class Formatter:
             #print("all")
             metricOptions.clear()
             metricOptions["algorithmName"] = "Name"
-            metricOptions["nonNormalizedDuration"] = "NNORMD Duration in ms"
+            metricOptions["nonNormalizedDuration"] = f"NNORMD Duration in{self.mode}"
             metricOptions["normalizedDuration"] = f"Duration in{self.mode}"
             metricOptions["iterations"] = "Iterations"
             metricOptions["recursions"] = "Recursions"
