@@ -6,9 +6,9 @@ SAB - **S**orting**A**lgorithm**B**enchmark
 
 > First of all a disclaimer. This is only a silly school project, so dont expect this to be any good whatsoever.
 
-This Project is a sorting algorithm benchmark. It comes with a couple precoded algorithm written by me, and 2 copy-pasted from the webs.
+This Project is a sorting algorithms benchmark. It comes with a couple precoded algorithm written by me, and 2 copy-pasted from the webs.
 You can easily add your own algorithm to test. Simply follow [Adding your own Sorting Algorithms](#Adding-your-own-Sortig-Algorithm) for a little guide.
-You dont need to add any metrics if you dont want to.
+You dont need to add any metrics if you dont want to. The core Benchmark aspect will still work
 
 ## Usage:
 
@@ -51,7 +51,7 @@ Metrics Mode is an optional parameter when using sab. The default setting of it 
   - [Sample Size](#Sample-Size)
   - [Loop Count](#Loop-Count)
   - [Winsorization](#Winsorization)
-  - [Number Range](#Number Range)
+  - [Number Range](#NumberRange)
 
 ##### alev
 
@@ -189,7 +189,7 @@ Your sorting algorithm is then gonna be listed under the help syntax as choice w
 
 ### Metrics for your own Algorithm
 
-If you want to add metrics to your own Sorting Algorithm you will need to do those yourself. You can look into the existing Algos to look for guidance where to place each metric.
+> If you want to add metrics to your own Sorting Algorithm you will need to do those yourself. You can look into the existing Algos to look for guidance where to place each metric.
 
 #### The Info Object
 
@@ -198,14 +198,14 @@ The info object is an instance of the Metrics class.
 
 #### Iterations
 
-You wanna call info.Iterations() at the start of every loop inside your Algorithm.
+You wanna call info.tickIteration() at the start of every loop inside your Algorithm.
 
 #### Recursions
 
-You wanna call Recursion at the start of your Algorithm. If you use Helper functions call info.Recursion() at the start of each of those too.
+You wanna call Recursion at the start of your Algorithm. If you use Helper functions call info.tickRecursion() at the start of each of those too.
 
 #### Assignments
 
-You wanna call info.Assignmnts() every time you manipulate the Array if you mutate in place or if you put a number into a new array or if you swap numbers thats also an Assignment.
+You wanna call info.tickAssignment() every time you manipulate the Array if you mutate in place or if you put a number into a new array or if you swap numbers thats also an Assignment.
 
 # UNDER CONSTRUCTION
