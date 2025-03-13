@@ -6,8 +6,6 @@ import argparse
 import sys
 from importlib import import_module
 
-
-## Sorting function must have 1 and only 1 Entry point named sort()
 dynamicImpoter = DynamicImport()
 dynamicImportedFunctions = dynamicImpoter.returnImport()
 
@@ -15,8 +13,6 @@ parser = argparse.ArgumentParser(prog="SA-Benchmark",
                                  description="Programm takes sorting functions present in its functions directory and benchmarks those.",
                                  epilog=""
                                  )
-#formatter_class=argparse.MetavarTypeHelpFormatter
-#parser.add_argument("-md", "--metaData", help="Prints Header Table above Benchmark", action="store_true")
 parser.add_argument("-d", "--debugMode", help="Turns on some debug Information", action="store_true", default=False)
 parser.add_argument("-m", "--metricsMode", help="set Metrics to display", choices=["minimal", "default", "extended", "alev", "all"], default="default")
 parser.add_argument("-r", "--numberRanges", help="set the Number Array Ranges for the Benchmark", type=int, nargs="+", default=[50,-50,50])
